@@ -32,7 +32,10 @@ app.use(
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const buildpath = path.join(__dirname, "../client/dist");
+//buildpath for docker
+const buildpath = path.join(__dirname, "./frontend/dist");
+//buildpath for development
+//const buildpath = path.join(__dirname, "../frontend/dist");
 
 app.use(express.static(buildpath));
 
@@ -43,9 +46,17 @@ app.use('/invoice', invoiceRoutes);
 
 verifyS3Connection()
 
+//for docker
 app.get("/*splat", (req, res) => {
-   res.sendFile(path.resolve(__dirname, "../client/dist/index.html"));
+   res.sendFile(path.resolve(__dirname, "index.html"));
  });
+
+//for development
+/*
+app.get("/*splat", (req, res) => {
+   res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
+});
+*/
 
 app.listen(3000, () => {
   console.log("Running on port 3000...");
