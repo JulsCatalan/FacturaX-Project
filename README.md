@@ -133,6 +133,10 @@ credentials: 'include'
 
 El token JWT se almacena de forma segura en una cookie httpOnly que se incluye automáticamente en las peticiones cuando se usa `credentials: 'include'`.
 
+## Carpeta Test/data
+
+Esta carpeta es necesaria en el proyecto para que la dependencia de pdf-parser funcione correctamente ya que a falta de esta se manda un error. Esta solo contiene un pdf vacío.
+
 ## 📝 Licencia
 
 Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
